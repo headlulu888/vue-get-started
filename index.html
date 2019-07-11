@@ -8,19 +8,26 @@
 </head>
 <body>
     <div id="app">
-        <input type="text" v-on:input="changename">
-        <h1>hello {{name}}</h1>
+        <h1>String {{name}}</h1>
+        <h1>Sum {{ 10+60 }}</h1>
+        <h1>Number: {{ number }}</h1>
+        <h1>Method: {{ sayHello() }}</h1>
+        <h1>If statetment: {{ isOk ? 'iam ok' : 'iam not ok' }}</h1>
+        <h1>Function: {{ string.split('').reverse().join('') }}</h1>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-                name: 'Vue'
+                name: 'Vue',
+                number: 100,
+                isOk: true,
+                string: 'My name is ray'
             },
             methods: {
-                changename: function(event) {
-                    this.name = event.target.value
+                sayHello: function() {
+                    return 'Iam function'
                 }
             }
         })
