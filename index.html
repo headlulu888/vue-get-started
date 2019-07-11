@@ -8,27 +8,16 @@
 </head>
 <body>
     <div id="app">
-        <h1>String {{name}}</h1>
-        <h1>Sum {{ 10+60 }}</h1>
-        <h1>Number: {{ number }}</h1>
-        <h1>Method: {{ sayHello() }}</h1>
-        <h1>If statetment: {{ isOk ? 'iam ok' : 'iam not ok' }}</h1>
-        <h1>Function: {{ string.split('').reverse().join('') }}</h1>
+        <h2>
+            <a v-bind:href="url">{{ url }}</a>
+        </h2>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-                name: 'Vue',
-                number: 100,
-                isOk: true,
-                string: 'My name is ray'
-            },
-            methods: {
-                sayHello: function() {
-                    return 'Iam function'
-                }
+                url: 'http://google.com'
             }
         })
     </script>
