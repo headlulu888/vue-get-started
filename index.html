@@ -7,6 +7,23 @@
     <title>VueJS Get Started</title>
 </head>
 <body>
-    
+    <div id="app">
+        <input type="text" v-on:input="changename">
+        <h1>hello {{name}}</h1>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                name: 'Vue'
+            },
+            methods: {
+                changename: function(event) {
+                    this.name = event.target.value
+                }
+            }
+        })
+    </script>
 </body>
 </html>
