@@ -8,30 +8,38 @@
 </head>
 <body>
     <div id="app">
-        <h2>{{ title}} = {{ counter }}</h2>
-        <button v-on:click="riseCounter(5, 'Изменено на 5', $event)">Увеличить на 5</button>
-        <button v-on:click="riseCounter(10, 'Изменено на 10', $event)">Увеличить на 10</button>
+        <!-- first way -->
+        <!-- <h2>
+            <a href="http://google.com" target="_blank" v-on:click="clickOnGoogle">Google</a>
+        </h2> -->
+
+        <!-- second wa -> v-on:click.prevent -->
+        <h2>
+            <a href="http://google.com" v-on:click.prevent="">Google</a>
+        </h2>
+
+        <h2 v-on:mousemove="handleMouseMove">
+            x: {{ x }} | y: {{ y }}
+            <span v-on:mousemove.stop="">Не изменять</span>
+        </h2>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-                counter: 0,
-                title: 'Счетчик'
+                x: 0,
+                y: 0
             },
             methods: {
-                riseCounter: function(num, str, event) {
-                    this.counter += num,
-                    this.title = str
+                // first way
+                // clickOnGoogle: function(event) {
+                //     event.preventDefault()
+                // }
 
-                    if (num === 5) {
-                        //blue
-                        event.target.style.color = 'blue'
-                    } else if (num === 10) {
-                        //red
-                        event.target.style.color = 'red'
-                    }
+                handleMouseMove: function(event) {
+                    this.x = event.clientX
+                    this.y = event.clientY
                 }
             }
         })
