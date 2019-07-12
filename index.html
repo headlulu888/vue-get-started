@@ -8,52 +8,25 @@
 </head>
 <body>
     <div id="app">
-        <!-- first way -->
-        <!-- <h2>
-            <a href="http://google.com" target="_blank" v-on:click="clickOnGoogle">Google</a>
-        </h2> -->
-
-        <!-- second wa -> v-on:click.prevent -->
         <h2>
-            <a href="http://google.com" v-on:click.prevent="">Google</a>
+            <a :href="url">Google</a>
         </h2>
 
-        <h2 v-on:mousemove="handleMouseMove">
-            x: {{ x }} | y: {{ y }}
-            <span v-on:mousemove.stop="">Не изменять</span>
+        <h2>
+            Counter: {{ counter }}
         </h2>
-
-        <hr>
-        <!-- first way -->
-        <!-- <input type="text" v-on:keyup="alertValue"> -->
-
-        <!-- second way -->
-        <input type="text" v-on:keyup.enter.space="alertValue">
+        <button @click="counter++">Rise</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-                x: 0,
-                y: 0
+                url: 'http://google.com',
+                counter: 0
             },
             methods: {
-                // first way
-                // clickOnGoogle: function(event) {
-                //     event.preventDefault()
-                // }
-
-                handleMouseMove: function(event) {
-                    this.x = event.clientX
-                    this.y = event.clientY
-                },
-                // firstway
-                alertValue: function(event) {
-                    if (event.keyCode === 13) {
-                        alert(event.target.value)
-                    }
-                }
+                
             }
         })
     </script>
