@@ -5,23 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VueJS Get Started</title>
+    <style>
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 1px solid black;
+            display: inline-block;
+            margin: 40px;
+        }
+
+        .red { background-color: red; }
+        .blue { background-color: blue; }
+        .green { background-color: green; }
+    </style>
 </head>
 <body>
     <div id="app">
-        <!-- first way -->
-        <!-- <input type="text" @input="inputValue = $event.target.value" :value="inputValue"> -->
+        <div class="circle" @click="isActive = !isActive" :class="getCssClasses"></div>
 
-        <!-- second way -->
-        <input type="text" v-model.lazy="inputValue">
-
-        <h2>{{ inputValue }}</h2>
+        <div class="circle" :class="[color, {'red': isActive}]"></div>
+        <input type="text" v-model="color">
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-                inputValue: 'Initial value'
+                isActive: false,
+                color: 'blue'
+            },
+            computed: {
+                getCssClasses: function() {
+                    return {
+                        'red': this.isActive,
+                        'green': !this.isActive
+                    }
+                }
+            },
+            methods: {
+                // getCssClasses: function() {
+                //     return {
+                //         'red': this.isActive,
+                //         'green': !this.isActive
+                //     }
+                // }
             }
         })
     </script>
