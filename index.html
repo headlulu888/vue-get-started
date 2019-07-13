@@ -22,10 +22,11 @@
 </head>
 <body>
     <div id="app">
-        <div class="circle" @click="isActive = !isActive" :class="getCssClasses"></div>
-
-        <div class="circle" :class="[color, {'red': isActive}]"></div>
+        <div class="circle" :style="circleClasses"></div>
+        <div class="circle" :style="[circleClasses, {'width': height + 'px'}]"></div>
+        <hr>
         <input type="text" v-model="color">
+        <input type="text" v-model="height">
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script>
@@ -33,24 +34,17 @@
             el: '#app',
             data: {
                 isActive: false,
-                color: 'blue'
+                color: 'blue',
+                height: 100
             },
             computed: {
-                getCssClasses: function() {
+                circleClasses: function() {
                     return {
-                        'red': this.isActive,
-                        'green': !this.isActive
+                        'background': this.color,
+                        'height': this.height + 'px'
                     }
                 }
             },
-            methods: {
-                // getCssClasses: function() {
-                //     return {
-                //         'red': this.isActive,
-                //         'green': !this.isActive
-                //     }
-                // }
-            }
         })
     </script>
 </body>
