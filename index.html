@@ -8,42 +8,42 @@
 </head>
 <body>
     <div id="app">
-        <!-- <ul>
-            <li>{{ people[0] }}</li>
-            <li>{{ people[1] }}</li>
-            <li>{{ people[2] }}</li>
-        </ul> -->
+        <h2>Counter {{ counter }} | {{ counter2 }}</h2>
+        <h3>Result: {{ result() }}</h3>
+        <h3>Computed result: {{ computedResult }}</h3>
 
-        <ul>
-            <li v-for="(person, index) of people">{{ index + 1 }}. {{ person.name }} - <b>{{ person.age }}</b></li>
-        </ul>
-
-        <ol >
-            <li v-for="num in 10">{{ num }}</li>
-        </ol>
-
-        <hr>
-
-        <ul>
-            <li v-for="(value, key, index) in person">{{ value }} - <b>{{ key }}</b> - <em>{{ index + 1 }}</em></li>
-        </ul>
+        <button @click="add">Add</button>
+        <button @click="sub">Sub</button>
+        <button @click="counter2++">counter2</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-                people: [
-                    {name: 'Vlad', age: 20},
-                    {name: 'Max', age: 21},
-                    {name: 'Elena', age: 22}
-                ],
-                person: {
-                    name: 'Max',
-                    age: 25,
-                    job: 'Frontend'
+                counter: 0,
+                counter2: 0
+            },
+            methods: {
+                add: function() {
+                    this.counter++
+                    // this.condition = this.counter > 3 ? 'More than free' : 'Less than free'
+                },
+                sub: function() {
+                    this.counter--
+                    // this.condition = this.counter > 3 ? 'More than free' : 'Less than free'
+                },
+                result: function() {
+                    console.log('result was called')
+                    return this.counter > 3 ? 'More than free' : 'Less than free'
                 }
             },
+            computed: {
+                computedResult: function() {
+                    console.log('computed result was called')
+                    return this.counter > 3 ? 'More than free' : 'Less than free'
+                }
+            }
         })
     </script>
 </body>
