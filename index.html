@@ -8,20 +8,41 @@
 </head>
 <body>
     <div id="app">
-        <!-- <h1 v-if="isVisible">Iam visible</h1>
-        <h2 v-else>You cant see me</h2> -->
+        <!-- <ul>
+            <li>{{ people[0] }}</li>
+            <li>{{ people[1] }}</li>
+            <li>{{ people[2] }}</li>
+        </ul> -->
 
-        <h1 v-show="isVisible">Iam visible</h1>
-        <h2 v-show="!isVisible">You cant see me</h2>
+        <ul>
+            <li v-for="(person, index) of people">{{ index + 1 }}. {{ person.name }} - <b>{{ person.age }}</b></li>
+        </ul>
 
-        <button @click="isVisible = !isVisible">Toogle</button>
+        <ol >
+            <li v-for="num in 10">{{ num }}</li>
+        </ol>
+
+        <hr>
+
+        <ul>
+            <li v-for="(value, key, index) in person">{{ value }} - <b>{{ key }}</b> - <em>{{ index + 1 }}</em></li>
+        </ul>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script>
         new Vue({
             el: '#app',
             data: {
-                isVisible: false
+                people: [
+                    {name: 'Vlad', age: 20},
+                    {name: 'Max', age: 21},
+                    {name: 'Elena', age: 22}
+                ],
+                person: {
+                    name: 'Max',
+                    age: 25,
+                    job: 'Frontend'
+                }
             },
         })
     </script>
