@@ -43,6 +43,11 @@
                     console.log('computed result was called')
                     return this.counter > 3 ? 'More than free' : 'Less than free'
                 }
+            },
+            watch: {
+                counter: function(val) {
+                    console.log('From watch ', val)
+                }
             }
         })
     </script>
