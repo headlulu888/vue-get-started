@@ -8,45 +8,47 @@
 </head>
 <body>
     <div id="app">
-        <h2>Counter {{ counter }} | {{ counter2 }}</h2>
-        <h3>Result: {{ result() }}</h3>
-        <h3>Computed result: {{ computedResult }}</h3>
+        <h2>{{ title }}</h2>
+        <h3>{{ newField }}</h3>
+        <button @click="title = 'Update title'">Update title</button>
+    </div>
+    <hr>
+    <div id="app2">
+        <h2>{{ title }}</h2>
 
-        <button @click="add">Add</button>
-        <button @click="sub">Sub</button>
-        <button @click="counter2++">counter2</button>
+        <button @click="updateFirstTitle">updateFirstTitle</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script>
-        new Vue({
+        var vue1 = new Vue({
             el: '#app',
             data: {
-                counter: 0,
-                counter2: 0
+                title: 'hello i am vue!'
             },
             methods: {
-                add: function() {
-                    this.counter++
-                    // this.condition = this.counter > 3 ? 'More than free' : 'Less than free'
-                },
-                sub: function() {
-                    this.counter--
-                    // this.condition = this.counter > 3 ? 'More than free' : 'Less than free'
-                },
-                result: function() {
-                    console.log('result was called')
-                    return this.counter > 3 ? 'More than free' : 'Less than free'
+                alertFast: function() {
+                    alert('iam from vue1')
                 }
+            }
+        })
+
+        console.log(vue1)
+
+        vue1.newField = 'Random text';
+
+        new Vue({
+            el: '#app2',
+            data: {
+                title: 'hello from vue 2'
             },
-            computed: {
-                computedResult: function() {
-                    console.log('computed result was called')
-                    return this.counter > 3 ? 'More than free' : 'Less than free'
-                }
-            },
-            watch: {
-                counter: function(val) {
-                    console.log('From watch ', val)
+            methods: {
+                updateFirstTitle: function() {
+                    vue1.title = 'updated form second app'
+                    vue1.newField = 'New field app2'
+
+                    setInterval(function() {
+                        vue1.alertFast()
+                    }, 1000)
                 }
             }
         })
