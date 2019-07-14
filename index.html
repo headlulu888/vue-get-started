@@ -7,30 +7,17 @@
     <title>VueJS Get Started</title>
 </head>
 <body>
-    <div id="app">
-        <h2 ref="heading">{{ title }}</h2>
-        
-        <button @click="updateFirstTitle">Update title</button>
-        <hr ref="horLine">
-
-
-    </div>
+    <div id="app"></div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script>
-        var vue1 = new Vue({
-            el: '#app',
+        var vue = new Vue({
             data: {
-                title: 'hello i am vue!'
+                title: 'hello i am vue! 1'
             },
-            methods: {
-                updateFirstTitle() {
-                    this.title = 'New title!'
-                    this.$refs.heading.style.color = 'red'
-                    // console.log(this.$refs)
-                    console.log(document.querySelector('hr'))
-                }
-            }
+            template: '<div><h1>{{ title }}</h1><p>ss.f,s</p></div>'
         })
+
+        vue.$mount('#app')
     </script>
 </body>
 </html>
