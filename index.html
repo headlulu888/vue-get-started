@@ -8,15 +8,12 @@
 </head>
 <body>
     <div id="app">
-        <h2>{{ title }}</h2>
-        <h3>{{ newField }}</h3>
-        <button @click="title = 'Update title'">Update title</button>
-    </div>
-    <hr>
-    <div id="app2">
-        <h2>{{ title }}</h2>
+        <h2 ref="heading">{{ title }}</h2>
+        
+        <button @click="updateFirstTitle">Update title</button>
+        <hr ref="horLine">
 
-        <button @click="updateFirstTitle">updateFirstTitle</button>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script>
@@ -26,29 +23,11 @@
                 title: 'hello i am vue!'
             },
             methods: {
-                alertFast: function() {
-                    alert('iam from vue1')
-                }
-            }
-        })
-
-        console.log(vue1)
-
-        vue1.newField = 'Random text';
-
-        new Vue({
-            el: '#app2',
-            data: {
-                title: 'hello from vue 2'
-            },
-            methods: {
-                updateFirstTitle: function() {
-                    vue1.title = 'updated form second app'
-                    vue1.newField = 'New field app2'
-
-                    setInterval(function() {
-                        vue1.alertFast()
-                    }, 1000)
+                updateFirstTitle() {
+                    this.title = 'New title!'
+                    this.$refs.heading.style.color = 'red'
+                    // console.log(this.$refs)
+                    console.log(document.querySelector('hr'))
                 }
             }
         })
