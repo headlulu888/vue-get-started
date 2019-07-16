@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    date() {
+    data() {
         return {
             carName: 'Ford',
             carYear: 2015

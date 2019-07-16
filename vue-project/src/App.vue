@@ -7,6 +7,7 @@
 
 <script>
 import Car from './Car.vue'
+
 export default {
   name: 'app',
   data () {
