@@ -2,6 +2,7 @@
     <div class="car">
         <h3>Carname: {{ carName }} | {{ reverseName }}</h3>
         <p>Caryear: {{ carYear }}</p>
+        <button @click="changeName">Change</button>
     </div>
 </template>
 
@@ -15,11 +16,16 @@ export default {
     props: {
         carName: {
             type: String,
-            required: true,
             default: 'Default name'
         },
         carYear: {
             type: Number
+        }
+    },
+    methods: {
+        changeName: function() {
+            this.carName = 'Mazda',
+            this.$emit('nameChange', this.carName)
         }
     },
     computed: {

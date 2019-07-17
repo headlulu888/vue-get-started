@@ -5,6 +5,7 @@
     <app-car
       :carName="carName"
       :carYear="carYear"
+      @nameChange="carName = $event"
     >
     </app-car>
   </div>
