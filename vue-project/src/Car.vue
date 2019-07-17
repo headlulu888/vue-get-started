@@ -1,18 +1,30 @@
 <template>
     <div class="car">
-        <h3>Carname: {{ carName }}</h3>
+        <h3>Carname: {{ carName }} | {{ reverseName }}</h3>
         <p>Caryear: {{ carYear }}</p>
     </div>
 </template>
 
 <script>
 export default {
-    props: [
-        'carName',
-        'carYear'
-    ],
-    data() {
-        return {
+    // props: ['carName','carYear'],
+    // props: {
+    //     carName: String,
+    //     carYear: Number
+    // },
+    props: {
+        carName: {
+            type: String,
+            required: true,
+            default: 'Default name'
+        },
+        carYear: {
+            type: Number
+        }
+    },
+    computed: {
+        reverseName() {
+            return this.carName.split('').reverse().join('')
         }
     }
 }
