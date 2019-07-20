@@ -1,7 +1,7 @@
 <template>
   <div>
     <app-car>
-      <h1>{{ title }}</h1>      
+      <h1 v-colored>{{ title }}</h1>      
       <button v-on:></button>
     </app-car>
   </div>
