@@ -1,9 +1,8 @@
 <template>
   <div>
-    <app-car>
-      <h1 v-colored>{{ title }}</h1>      
-      <button v-on:></button>
-    </app-car>
+      <h1 v-colored v-if="visible">{{ title }}</h1>      
+      <button @click="visible = !visible">Toggle</button>
+      <button @click="title = 'New title'">Change title</button>
   </div>
 </template>
 
@@ -11,7 +10,8 @@
 export default {
   data() {
     return {
-      title: 'hello i am vue'
+      title: 'hello i am vue',
+      visible: true
     }
   }
 }
