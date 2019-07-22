@@ -2,22 +2,20 @@
   <div>
       <h2>test</h2>
       <label for="">
-        <input type="checkbox" value="instagram" v-model="socials">Instagram
+        <input type="radio" value="instagram" v-model="socials">Instagram
       </label>
 
       <label for="">
-        <input type="checkbox" value="vk" v-model="socials">Vk
+        <input type="radio" value="vk" v-model="socials">Vk
       </label>
 
       <label for="">
-        <input type="checkbox" value="facebook" v-model="socials">Facebook
+        <input type="radio" value="facebook" v-model="socials">Facebook
       </label>
 
       <hr>
 
-      <ul>
-        <li v-for="s of socials">{{ s }}</li>
-      </ul>
+      <p>{{ socials }}</p>
   </div>
 </template>
 
@@ -25,9 +23,7 @@
 export default {
   data() {
     return {
-      socials: [
-        'vk'
-      ]
+      socials: 'vk'
     }
   }
 }
