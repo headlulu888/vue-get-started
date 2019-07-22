@@ -1,8 +1,8 @@
 <template>
   <div>
       <h2>test</h2>
-      <input type="text" v-model.lazy="name">
-      <p>{{ name }}</p>
+      <textarea v-model="textarea">{{ textarea }}</textarea>
+      <p>{{ textarea }}</p>
   </div>
 </template>
 
@@ -10,11 +10,19 @@
 export default {
   data() {
     return {
-      name: 'initial state'
+      textarea: 'initial state'
     }
   }
 }
 </script>
 
 <style scoped>
+  textarea {
+    height: 100px;
+    width: 350px;
+  }
+
+  p {
+    white-space: pre;
+  }
 </style>
