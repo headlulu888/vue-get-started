@@ -1,35 +1,31 @@
 <template>
   <div>
-      <h2>test</h2>
-      <input type="text" v-model.number="age">
+    <h2>Form inputs</h2>
 
-      <p>{{ age }}</p>
+    <app-onoff v-model="switched"></app-onoff>
+
+    <div>
+      <h3 v-if="switched">Component is enabled</h3>
+      <h3 v-else>Component is disabled</h3>
+    </div>
   </div>
 </template>
 
 <script>
+  import Onoff from './Onoff.vue'
+
 export default {
-  data() {
+  data () {
     return {
-      age: 20
+      switched: true
     }
   },
-  watch: {
-    age(value) {
-      console.log(value)
-      console.log(typeof value)
-    }
+  components: {
+    appOnoff: Onoff
   }
 }
 </script>
 
 <style scoped>
-  textarea {
-    height: 100px;
-    width: 350px;
-  }
 
-  p {
-    white-space: pre;
-  }
 </style>
