@@ -27,17 +27,33 @@
         >
         <div class="invalid-feedback" v-if="!$v.password.minLength">Min length of password is {{ $v.password.$params.minLength.min }}. Now it is {{ password.length }}</div>
       </div>
+
+      <div class="form-group pt-3">
+        <label for="Confirm">Confirm password</label>
+        <input 
+          type="password" 
+          id="Confirm" 
+          class="form-control"
+          :class="{'is-invalid': $v.confirmPassword.$error}"
+          @blur="$v.confirmPassword.$touch()"
+          v-model="confirmPassword"
+        >
+        <div class="invalid-feedback" v-if="!$v.password.sameAs">
+          password should match
+        </div>
+      </div>
     </form>
   </div>
 </template>
 
 <script>
-import { required, email, minLength } from 'vuelidate/lib/validators'
+import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
 export default {
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      confirmPassword: ''
     }
   },
   validations: {
@@ -47,6 +63,9 @@ export default {
     },
     password: {
       minLength: minLength(6)
+    },
+    confirmPassword: {
+      sameAs: sameAs('password')
     }
   }
 }
