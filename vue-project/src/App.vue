@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form>
+    <form class="pt-3" @submit.prevent="onSubmit">
       <div class="form-group pt-3">
         <label for="email">email</label>
         <input 
@@ -42,6 +42,11 @@
           password should match
         </div>
       </div>
+      <button
+        class="btn btn-success"
+        type="submit"
+        :disabled="$v.$invalid"
+      >Submit</button>
     </form>
   </div>
 </template>
@@ -56,10 +61,28 @@ export default {
       confirmPassword: ''
     }
   },
+  methods: {
+    onSubmit() {
+      console.log('Email', this.email)
+      console.log('Password', this.password)
+    }
+  },
   validations: {
     email: {
       required,
-      email
+      email,
+      uniqEmail: function(newEmail) {
+        if (newEmail === '') {
+          return true
+        }
+
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const value = newEmail !== 'test@mail.ru'
+            resolve(value)
+          }, 3000)
+        })
+      }
     },
     password: {
       minLength: minLength(6)
