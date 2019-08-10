@@ -25,10 +25,10 @@ export default {
   methods: {
     createCar() {
       const car = {
-        name = this.carName,
-        year = this.carYear
+        name: this.carName,
+        year: this.carYear
       }
-      
+
       this.$http.post('http://localhost:3000/cars', car)
         .then(response => {
           console.log(response)
